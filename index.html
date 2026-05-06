@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lufthansa - Vérification de Réservation</title>
+    <title>Sky Airlines - Vérification de Réservation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Arrière-plan avec l'image de l'avion Lufthansa */
-            background-image: linear-gradient(rgba(0, 31, 63, 0.5), rgba(0, 31, 63, 0.5)), url('https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=2070&auto=format&fit=crop'); 
+            /* Arrière-plan avec overlay marron */
+            background-image: linear-gradient(rgba(62, 39, 35, 0.6), rgba(62, 39, 35, 0.6)), url('https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -19,26 +19,27 @@
             overflow-x: hidden;
         }
 
-        /* Effet de verre bleu transparent */
+        /* Effet de verre marron transparent */
         .glass-container {
-            background: rgba(0, 40, 85, 0.4);
+            background: rgba(93, 64, 55, 0.4);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
-        .lufthansa-navy {
-            color: #001f3f;
+        .sky-brown {
+            color: #3E2723;
         }
 
-        .btn-lufthansa-red {
-            background-color: #e30613;
+        .btn-sky-yellow {
+            background-color: #FFD700;
+            color: #3E2723;
             transition: all 0.3s ease;
         }
 
-        .btn-lufthansa-red:hover {
-            background-color: #b3050f;
+        .btn-sky-yellow:hover {
+            background-color: #FBC02D;
             transform: scale(1.02);
         }
 
@@ -61,7 +62,7 @@
 
     <!-- En-tête : Nom de la compagnie -->
     <header class="w-full p-6 text-white text-3xl font-bold tracking-widest text-center md:text-left md:pl-12">
-        LUFTHANSA
+        SKY AIRLINES
     </header>
 
     <main class="flex-grow flex items-center justify-center p-4">
@@ -81,7 +82,7 @@
                         </div>
 
                         <!-- Champ PNR -->
-                        <div class="flex items-center border border-gray-300 p-3 focus-within:border-blue-900">
+                        <div class="flex items-center border border-gray-300 p-3 focus-within:border-[#3E2723]">
                             <div class="mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
                             </div>
@@ -89,7 +90,7 @@
                         </div>
 
                         <!-- Champ Nom -->
-                        <div class="flex items-center border border-gray-300 p-3 focus-within:border-blue-900">
+                        <div class="flex items-center border border-gray-300 p-3 focus-within:border-[#3E2723]">
                             <div class="mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                             </div>
@@ -98,7 +99,7 @@
 
                         <p class="text-[10px] text-gray-500 uppercase font-bold">* Champs obligatoires</p>
 
-                        <button onclick="handleSearch()" class="w-full btn-lufthansa-red text-white font-bold py-4 text-center tracking-widest mt-4 shadow-lg">
+                        <button onclick="handleSearch()" class="w-full btn-sky-yellow font-bold py-4 text-center tracking-widest mt-4 shadow-lg">
                             RECHERCHER
                         </button>
                     </div>
@@ -108,7 +109,7 @@
             <!-- BLOC SECONDAIRE -->
             <div class="glass-container p-8 rounded-lg flex flex-col items-center justify-center text-center text-white">
                 <h2 class="text-2xl font-semibold mb-6 uppercase tracking-wide">MES RÉSERVATIONS</h2>
-                <p class="mb-8 max-w-xs opacity-90">Accédez à l'ensemble de vos vols et gérez vos préférences de voyage en un clic.</p>
+                <p class="mb-8 max-w-xs opacity-90">Accédez à l'ensemble de vos vols et gérez vos préférences de voyage en un clic avec Sky Airlines.</p>
                 <button class="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-12 tracking-widest border border-white/30 transition-all">
                     SE CONNECTER
                 </button>
@@ -117,43 +118,41 @@
 
         <!-- PAGE DES RÉSULTATS (Informations du vol) -->
         <div id="results-page" class="hidden w-full max-w-5xl fade-in">
-            <!-- Conteneur transparent aussi pour la page de résultats -->
             <div class="glass-container p-6 md:p-10 rounded-lg text-white">
                 <div class="flex flex-col md:flex-row justify-between items-center border-b border-white/20 pb-6 mb-8 gap-4">
                     <div>
-                        <h2 class="text-3xl font-bold uppercase tracking-tighter">Votre Itinéraire</h2>
-                        <p class="text-white/70">Statut : <span class="text-green-400 font-bold tracking-widest ml-2">CONFIRMÉ</span></p>
+                        <h2 class="text-3xl font-bold uppercase tracking-tighter">Votre Itinéraire Sky</h2>
+                        <p class="text-white/70">Statut : <span class="text-yellow-400 font-bold tracking-widest ml-2">CONFIRMÉ</span></p>
                     </div>
                     <div id="current-time" class="text-sm bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 font-mono">
                         <!-- Date/Heure Europe -->
                     </div>
                 </div>
 
-                <!-- Carte d'embarquement stylisée en blanc pour contraste -->
                 <div class="bg-white text-slate-900 p-8 rounded-lg shadow-2xl relative overflow-hidden">
-                    <!-- Bande décorative Lufthansa -->
-                    <div class="absolute top-0 left-0 w-full h-2 bg-[#001f3f]"></div>
+                    <!-- Bande décorative Marron -->
+                    <div class="absolute top-0 left-0 w-full h-2 bg-[#3E2723]"></div>
                     
                     <div class="flex flex-col md:flex-row justify-between mb-10 gap-6">
                         <div class="flex items-center">
-                            <div class="mr-4 bg-blue-50 p-3 rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#001f3f" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <div class="mr-4 bg-orange-50 p-3 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3E2723" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                             </div>
                             <div>
                                 <p class="text-gray-400 text-[10px] uppercase font-bold tracking-wider">Passager principal</p>
-                                <p id="res-name" class="text-2xl font-black lufthansa-navy">TEHE SYLVANA</p>
+                                <p id="res-name" class="text-2xl font-black sky-brown">TEHE SYLVANA</p>
                             </div>
                         </div>
                         <div class="md:text-right flex flex-col justify-center">
                             <p class="text-gray-400 text-[10px] uppercase font-bold tracking-wider">Code de réservation (PNR)</p>
-                            <p class="text-3xl font-black text-red-600 tracking-widest">G8RH2K</p>
+                            <p class="text-3xl font-black text-[#5D4037] tracking-widest">G8RH2K</p>
                         </div>
                     </div>
 
                     <!-- Détails du vol -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center py-8 border-y border-gray-100">
                         <div class="text-center md:text-left">
-                            <p class="text-4xl font-black lufthansa-navy">PAR</p>
+                            <p class="text-4xl font-black sky-brown">PAR</p>
                             <p class="text-sm font-semibold text-gray-500 uppercase">Paris Charles de Gaulle</p>
                         </div>
 
@@ -161,41 +160,41 @@
                             <div class="w-full flex items-center justify-center mb-3">
                                 <div class="h-[2px] bg-slate-200 flex-grow"></div>
                                 <div class="mx-4 relative">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#001f3f" stroke="none" class="rotate-90"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#3E2723" stroke="none" class="rotate-90"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
                                 </div>
                                 <div class="h-[2px] bg-slate-200 flex-grow"></div>
                             </div>
-                            <span class="px-3 py-1 bg-blue-900 text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">Vol Direct</span>
+                            <span class="px-3 py-1 bg-[#3E2723] text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">Vol Direct</span>
                         </div>
 
                         <div class="text-center md:text-right">
-                            <p class="text-4xl font-black lufthansa-navy">BER</p>
+                            <p class="text-4xl font-black sky-brown">BER</p>
                             <p class="text-sm font-semibold text-gray-500 uppercase">Berlin-Brandebourg</p>
                         </div>
                     </div>
 
-                    <!-- Horaires Mis à jour -->
+                    <!-- Horaires -->
                     <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 bg-slate-50 p-6 rounded-lg border border-slate-100">
                         <!-- Départ -->
                         <div class="flex items-center space-x-4">
                             <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-200 shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FBC02D" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                             </div>
                             <div>
                                 <p class="text-[9px] text-gray-400 uppercase font-black">Départ</p>
-                                <p class="text-sm font-bold lufthansa-navy">27 mai 2026</p>
-                                <p class="text-sm font-black text-red-600">22h00</p>
+                                <p class="text-sm font-bold sky-brown">27 mai 2026</p>
+                                <p class="text-sm font-black text-yellow-600">22h00</p>
                             </div>
                         </div>
 
                         <!-- Durée -->
                         <div class="flex items-center space-x-4">
                             <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-200 shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#001f3f" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3E2723" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             </div>
                             <div>
                                 <p class="text-[9px] text-gray-400 uppercase font-black">Durée du vol</p>
-                                <p class="text-sm font-bold lufthansa-navy">6h 35min</p>
+                                <p class="text-sm font-bold sky-brown">6h 35min</p>
                             </div>
                         </div>
 
@@ -206,7 +205,7 @@
                             </div>
                             <div>
                                 <p class="text-[9px] text-gray-400 uppercase font-black">Arrivée</p>
-                                <p class="text-sm font-bold lufthansa-navy">28 mai 2026</p>
+                                <p class="text-sm font-bold sky-brown">28 mai 2026</p>
                                 <p class="text-sm font-black text-green-600">04h35</p>
                             </div>
                         </div>
@@ -214,11 +213,11 @@
                         <!-- Classe -->
                         <div class="flex items-center space-x-4">
                             <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-200 shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#001f3f" stroke-width="2"><path d="M7 18V5"/><path d="M17 18V5"/><path d="M7 11h10"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3E2723" stroke-width="2"><path d="M7 18V5"/><path d="M17 18V5"/><path d="M7 11h10"/></svg>
                             </div>
                             <div>
                                 <p class="text-[9px] text-gray-400 uppercase font-black">Cabine</p>
-                                <p class="text-sm font-bold lufthansa-navy">Économique</p>
+                                <p class="text-sm font-bold sky-brown">Économique</p>
                             </div>
                         </div>
                     </div>
@@ -232,11 +231,10 @@
     </main>
 
     <footer class="p-6 text-center text-white/50 text-xs tracking-widest font-medium">
-        &copy; 2026 LUFTHANSA GROUP - PLATEFORME DE VÉRIFICATION SÉCURISÉE
+        &copy; 2026 SKY AIRLINES GROUP - PLATEFORME DE VÉRIFICATION SÉCURISÉE
     </footer>
 
     <script>
-        // Mise à jour de l'heure format Europe
         function updateTime() {
             const now = new Date();
             const options = { 
@@ -260,21 +258,17 @@
         setInterval(updateTime, 1000);
         updateTime();
 
-        // Fonction de recherche rigoureuse
         function handleSearch() {
             const pnrInput = document.getElementById('pnr').value.trim().toUpperCase();
             const nameInput = document.getElementById('lastname').value.trim().toLowerCase();
             const errorMsg = document.getElementById('error-msg');
 
-            // Cacher le message d'erreur à chaque tentative
             errorMsg.classList.add('hidden');
 
-            // Vérification stricte
             const validPNR = "G8RH2K";
             const validName = "tehe sylvana";
 
             if (pnrInput === validPNR && nameInput === validName) {
-                // Animation de transition
                 const searchPage = document.getElementById('search-page');
                 searchPage.style.opacity = '0';
                 searchPage.style.transform = 'translateY(-20px)';
@@ -285,13 +279,11 @@
                     resultsPage.classList.remove('hidden');
                 }, 400);
             } else {
-                // Afficher erreur si vide ou incorrect
                 errorMsg.classList.remove('hidden');
                 errorMsg.classList.add('fade-in');
             }
         }
 
-        // Permettre la recherche avec la touche Entrée
         document.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 handleSearch();
