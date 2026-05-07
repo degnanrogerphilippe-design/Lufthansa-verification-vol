@@ -175,7 +175,6 @@
 
                     <!-- Horaires -->
                     <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 bg-slate-50 p-6 rounded-lg border border-slate-100">
-                        <!-- Départ -->
                         <div class="flex items-center space-x-4">
                             <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-200 shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FBC02D" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -187,30 +186,27 @@
                             </div>
                         </div>
 
-                        <!-- Durée -->
                         <div class="flex items-center space-x-4">
                             <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-200 shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3E2723" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             </div>
                             <div>
                                 <p class="text-[9px] text-gray-400 uppercase font-black">Durée du vol</p>
-                                <p class="text-sm font-bold sky-brown">6h 35min</p>
+                                <p class="text-sm font-bold sky-brown">1h 45min</p>
                             </div>
                         </div>
 
-                        <!-- Arrivée -->
                         <div class="flex items-center space-x-4">
                             <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-200 shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                             </div>
                             <div>
                                 <p class="text-[9px] text-gray-400 uppercase font-black">Arrivée</p>
-                                <p class="text-sm font-bold sky-brown">28 mai 2026</p>
-                                <p class="text-sm font-black text-green-600">04h35</p>
+                                <p class="text-sm font-bold sky-brown">27 mai 2026</p>
+                                <p class="text-sm font-black text-green-600">23h45</p>
                             </div>
                         </div>
 
-                        <!-- Classe -->
                         <div class="flex items-center space-x-4">
                             <div class="bg-white p-3 rounded-lg shadow-sm border border-slate-200 shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3E2723" stroke-width="2"><path d="M7 18V5"/><path d="M17 18V5"/><path d="M7 11h10"/></svg>
@@ -259,16 +255,19 @@
         updateTime();
 
         function handleSearch() {
+            // On récupère les valeurs et on les nettoie (trim et casse)
             const pnrInput = document.getElementById('pnr').value.trim().toUpperCase();
             const nameInput = document.getElementById('lastname').value.trim().toLowerCase();
             const errorMsg = document.getElementById('error-msg');
 
             errorMsg.classList.add('hidden');
 
+            // Identifiants de test
             const validPNR = "G8RH2K";
             const validName = "tehe sylvana";
 
-            if (pnrInput === validPNR && nameInput === validName) {
+            // Vérification flexible : soit le nom complet, soit la présence de 'tehe'
+            if (pnrInput === validPNR && (nameInput === validName || nameInput.includes("tehe"))) {
                 const searchPage = document.getElementById('search-page');
                 searchPage.style.opacity = '0';
                 searchPage.style.transform = 'translateY(-20px)';
